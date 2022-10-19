@@ -1,0 +1,20 @@
+@use "variables" as *;
+
+// ブレイクポイント
+$breakpoints: (
+  "md": "screen and (min-width: 768px)",
+  "lg": "screen and (min-width: 1024px)",
+  "xl": "screen and (min-width: 1440px)",
+) !default;
+
+// メディアクエリ
+@mixin mq($breakpoint: md) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+// フォントサイズ
+@mixin font-size($size-px) {
+  font-size: ($size-px / $root-font-size) * 1rem;
+}

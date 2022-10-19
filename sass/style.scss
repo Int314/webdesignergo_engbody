@@ -1,0 +1,844 @@
+@use "variables" as *;
+@use "mixin" as *;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-family;
+  color: $color-font-base;
+  line-height: 1.8;
+  letter-spacing: 0.05em;
+  @include font-size(15);
+  @include mq(lg) {
+    @include font-size(16);
+  }
+}
+
+img,
+svg {
+  max-width: 100%;
+  vertical-align: bottom;
+}
+
+a {
+  color: $color-font-base;
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+.container {
+  padding: 0 $padding-content;
+  max-width: 1170px;
+  margin: 0 auto;
+}
+
+.section-wave {
+  width: 100%;
+  &--top {
+    transform: translateY(1px);
+  }
+
+  &--bottom {
+    transform: translateY(-3px);
+  }
+}
+
+.section__inner {
+  &--color-reverse {
+    background-color: $color-main;
+  }
+}
+
+.section__title {
+  @include font-size(32);
+  color: $color-font-base;
+  @include mq(lg) {
+    @include font-size(64);
+  }
+  &--rev {
+    color: #fff;
+  }
+}
+.section__subtitle {
+  @include font-size(14);
+  color: $color-main;
+  margin-bottom: 30px;
+  display: inline-block;
+  @include mq(lg) {
+    @include font-size(20);
+  }
+  &--rev {
+    color: #fff;
+  }
+}
+
+.btn {
+  display: inline-block;
+  background-color: $color-main;
+  padding: 16px 25px;
+  color: #fff;
+  transition: 0.4s;
+  border: 1px solid $color-main;
+  border-radius: 100px;
+  font-weight: bold;
+  line-height: 1;
+  @include font-size(13);
+  @include mq(md) {
+    @include font-size(16);
+    padding: 20px 30px;
+  }
+  @include mq(lg) {
+    @include font-size(20);
+    padding: 35px 50px;
+  }
+  &:hover {
+    color: $color-main;
+    background-color: #fff;
+  }
+  &--rev {
+    background-color: #fff;
+    color: $color-main;
+  }
+  &--rev:hover {
+    color: #fff;
+    background-color: $color-main;
+    border: 1px solid currentColor;
+  }
+}
+
+.btn-go-top {
+  display: none;
+  position: fixed;
+  right: $padding-content;
+  bottom: $padding-content;
+  z-index: 10;
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 20%);
+    @include mq(lg) {
+      width: 80px;
+      height: 80px;
+    }
+  }
+  &__icon {
+    color: $color-main;
+    @include font-size(24);
+    @include mq(lg) {
+      font-size: 4rem;
+    }
+  }
+}
+
+.card {
+  padding: 40px 30px 30px 30px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 10%);
+  border-radius: 8px;
+  background-color: #fff;
+  @include mq(lg) {
+    padding: 40px;
+  }
+  @include mq(xl) {
+    padding: 60px;
+  }
+  &__label {
+    color: $color-main;
+    @include mq(lg) {
+      @include font-size(24);
+    }
+  }
+  &__label--green {
+    color: $color-green;
+  }
+  &__title {
+    margin-top: 20px;
+    @include font-size(22);
+    font-weight: bold;
+    @include mq(lg) {
+      font-weight: normal;
+      @include font-size(32);
+    }
+  }
+  &__text {
+    margin-top: 25px;
+    @include font-size(14);
+  }
+}
+
+.sp-only {
+  @include mq(md) {
+    display: none;
+  }
+}
+.pc-only {
+  display: none;
+  @include mq(md) {
+    display: block;
+  }
+}
+
+// -----------------------------------------
+// header
+// -----------------------------------------
+.header {
+  width: 100%;
+  height: 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  padding: 12px 0;
+  transition: 0.4s;
+  @include mq(lg) {
+    padding: 1em 0;
+    height: 80px;
+  }
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding-left: $padding-content;
+    padding-right: $padding-content;
+  }
+  &--active {
+    background-color: #fff;
+    .header__btn-wrraper {
+      display: block;
+    }
+  }
+}
+.logo {
+  width: 96px;
+  line-height: 1;
+  &__link {
+    display: block;
+  }
+  &__img {
+    width: 100%;
+  }
+  @include mq(lg) {
+    width: 180px;
+  }
+}
+.header__btn-wrraper {
+  display: none;
+}
+.header__btn {
+  @include font-size(12);
+  padding: 12px 15px;
+  @include mq(lg) {
+  }
+}
+
+// -----------------------------------------
+// mv
+// -----------------------------------------
+.mv {
+  position: relative;
+  height: 410px;
+  @include mq(md) {
+    height: 500px;
+  }
+  @include mq(lg) {
+    height: 680px;
+  }
+  &__lead-wrapper {
+    position: absolute;
+    top: 160px;
+    left: 0;
+    @include mq(lg) {
+      left: 25%;
+      transform: translateX(-25%);
+    }
+  }
+  &__lead-title {
+    @include font-size(42);
+    font-style: italic;
+    line-height: 1;
+    @include mq(md) {
+      @include font-size(80);
+    }
+    @include mq(lg) {
+      @include font-size(90);
+    }
+  }
+  &__text-bg-color {
+    background-color: #fff;
+  }
+  &__text-and {
+    color: $color-main;
+  }
+  &__lead-subtitle {
+    margin-top: 10px;
+    display: inline-block;
+    background-color: #fff;
+    font-weight: bold;
+    @include font-size(13);
+    @include mq(md) {
+      margin-top: 15px;
+      @include font-size(24);
+    }
+    @include mq(lg) {
+      margin-top: 20px;
+      @include font-size(28);
+    }
+  }
+  &__lead-btn-wrapper {
+    margin-top: 20px;
+    @include mq(lg) {
+      margin-top: 36px;
+    }
+  }
+  &__bg-img {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    background-image: url(../img/bg_mv.jpg);
+    background-position: center;
+    background-size: cover;
+    width: 66%;
+    height: 100%;
+    border-radius: 0 0 0 50px;
+  }
+}
+
+.bgextend {
+  animation-name: bgextendAnimeBase;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  position: relative;
+  overflow: hidden; /*　はみ出た色要素を隠す　*/
+  opacity: 0;
+}
+
+@keyframes bgextendAnimeBase {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/*中の要素*/
+.bgappear {
+  animation-name: bgextendAnimeSecond;
+  animation-duration: 1s;
+  animation-delay: 0.6s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+@keyframes bgextendAnimeSecond {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/*左から右*/
+.bgLRextend::before {
+  animation-name: bgLRextendAnime;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: $color-main; /*伸びる背景色の設定*/
+}
+@keyframes bgLRextendAnime {
+  0% {
+    transform-origin: left;
+    transform: scaleX(0);
+  }
+  50% {
+    transform-origin: left;
+    transform: scaleX(1);
+  }
+  50.001% {
+    transform-origin: right;
+  }
+  100% {
+    transform-origin: right;
+    transform: scaleX(0);
+  }
+}
+
+/* スクロールをしたら出現する要素にはじめに透過0を指定　*/
+.bgappearTrigger,
+.bgLRextendTrigger {
+  opacity: 0;
+}
+
+// -----------------------------------------
+// intro
+// -----------------------------------------
+.intro {
+  margin-top: -20px;
+  &__title {
+    text-align: center;
+    @include font-size(56);
+    font-weight: bold;
+    font-style: italic;
+    color: $color-main;
+    line-height: 1;
+    @include mq(lg) {
+      @include font-size(108);
+    }
+  }
+  &__subtitle {
+    @include font-size(16);
+    font-weight: bold;
+    text-align: center;
+    @include mq(lg) {
+      @include font-size(32);
+    }
+  }
+  &__subtitle-point {
+    color: $color-main;
+  }
+  &__text {
+    margin-top: 25px;
+    @include mq(lg) {
+      text-align: center;
+    }
+  }
+}
+
+// -----------------------------------------
+// training
+// -----------------------------------------
+.training {
+  margin-top: 20px;
+  @include mq(lg) {
+    margin-top: 36px;
+    margin-bottom: 20px;
+    position: relative;
+  }
+}
+
+.about__img-wrapper {
+  width: 100%;
+  @include mq(lg) {
+    width: 80%;
+  }
+  @include mq(xl) {
+    width: 66%;
+  }
+}
+.about__content {
+  margin-top: -10px;
+  position: relative;
+  z-index: 1;
+  @include mq(lg) {
+    position: absolute;
+    right: $padding-content;
+    bottom: -20px;
+    width: 60%;
+    padding: 0;
+  }
+  @include mq(xl) {
+    width: 44%;
+  }
+  &--reverse {
+    @include mq(lg) {
+      left: $padding-content;
+      right: inherit;
+    }
+  }
+}
+
+// -----------------------------------------
+// food
+// -----------------------------------------
+.food {
+  margin-top: 20px;
+  @include mq(lg) {
+    margin-top: 80px;
+    margin-bottom: 80px;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+// -----------------------------------------
+// about-btn
+// -----------------------------------------
+.about__btn-wrapper {
+  margin: 40px auto;
+  text-align: center;
+  @include mq(lg) {
+    display: none;
+  }
+}
+
+// -----------------------------------------
+// trainer
+// -----------------------------------------
+.trainer__inner {
+  background-color: $color-main;
+  padding-bottom: 40px;
+}
+.tab {
+  margin-top: 5px;
+}
+.tab__radio {
+  display: none;
+}
+.tab__contents section {
+  display: none;
+}
+.tab__btn {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  @include font-size(16);
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+  margin-bottom: 20px;
+  label {
+    display: block;
+    position: relative;
+    padding: 5px 0 14px 0;
+  }
+}
+
+#tab-1:checked ~ .tab__btn label[for="tab-1"],
+#tab-2:checked ~ .tab__btn label[for="tab-2"] {
+  font-weight: bold;
+  &::after {
+    content: "";
+    display: inline-block;
+    height: 2px;
+    background-color: #fff;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+  }
+}
+#tab-1:checked ~ .tab__contents .section-1,
+#tab-2:checked ~ .tab__contents .section-2 {
+  display: block;
+}
+
+.person {
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 15px;
+    @include mq(lg) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  &__item {
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #fff;
+  }
+  &__img {
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+  }
+  &__text {
+    @include font-size(14);
+    padding: 20px;
+    background-color: #fff;
+  }
+}
+
+// -----------------------------------------
+// studio
+// -----------------------------------------
+.studio {
+  margin-bottom: 40px;
+}
+.swiper-wrap {
+  position: relative;
+}
+.swiper-horizontal > .swiper-pagination-bullets,
+.swiper-pagination-bullets.swiper-pagination-horizontal,
+.swiper-pagination-custom,
+.swiper-pagination-fraction {
+  bottom: -30px;
+}
+.swiper-button-next,
+.swiper-button-prev {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #fff;
+  @include mq(lg) {
+    width: 80px;
+    height: 80px;
+  }
+  &::after {
+    font-family: "Material Icons Round";
+    color: $color-main;
+    @include font-size(24);
+    @include mq(lg) {
+      font-size: 4rem;
+    }
+  }
+}
+.swiper-button-prev {
+  left: -20px;
+  @include mq(lg) {
+    left: -40px;
+  }
+}
+.swiper-button-next {
+  right: -20px;
+  @include mq(lg) {
+    right: -40px;
+  }
+}
+.swiper-button-prev:after {
+  content: "navigate_before";
+}
+.swiper-button-next:after {
+  content: "navigate_next";
+}
+.swiper-pagination-bullet-active {
+  background: $color-main;
+}
+
+// -----------------------------------------
+// price
+// -----------------------------------------
+.price__body {
+  position: relative;
+  margin: 0 $padding-content-negative;
+  @include mq(lg) {
+    margin: 0 auto;
+  }
+}
+
+.price__inner {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: $color-main;
+}
+
+.price-list {
+  position: relative;
+  display: flex;
+  margin-top: -25px;
+  padding: 25px $padding-content 5px 0;
+  overflow-x: auto;
+  @include mq(lg) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin: 0;
+    overflow-x: inherit;
+    padding: 0;
+  }
+  &__scroll {
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    font-size: 12px;
+    color: #fff;
+    padding: 10px;
+    transform: translateY(-50%);
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.6);
+    @include mq(lg) {
+      display: none;
+    }
+  }
+  &__scroll-icon {
+    display: block;
+    font-size: 40px;
+    text-align: center;
+  }
+}
+
+.price-box {
+  display: inline-block;
+  position: relative;
+  width: 290px;
+  text-align: center;
+  margin-left: 20px;
+  padding: 40px 20px 0;
+  border-radius: 8px;
+  background-color: #fff;
+  @include mq(lg) {
+    width: 100%;
+    margin-left: 0;
+  }
+  &__label {
+    position: absolute;
+    top: -24px;
+    left: 50%;
+    width: 80%;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1;
+    color: $color-main;
+    padding: 10px;
+    transform: translateX(-50%);
+    border: 2px solid $color-main;
+    border-radius: 50px;
+    background-color: #fff;
+  }
+  &__title {
+    font-size: 26px;
+    font-weight: bold;
+    color: $color-main;
+    margin-bottom: 10px;
+  }
+  &__price {
+    padding-bottom: 20px;
+  }
+  &__price-price {
+    font-size: 48px;
+  }
+  &__price-price span {
+    font-size: 40px;
+  }
+  &__item {
+    padding: 30px 0;
+    border-top: 1px solid #ccc;
+  }
+  &__item-title {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  &__item-text {
+    font-weight: bold;
+  }
+}
+
+// -----------------------------------------
+// faq
+// -----------------------------------------
+.faq {
+  margin-top: 40px;
+}
+.faq__list {
+  display: flex;
+  flex-direction: column;
+}
+.faq__item-wrapper {
+  border-bottom: 1px solid #cccccc;
+  padding: 0 0 20px 20px;
+}
+.faq__item {
+  position: relative;
+  display: block;
+  padding-left: 20px;
+  &--q {
+    padding-top: 20px;
+    cursor: pointer;
+  }
+  &--a {
+    padding-top: 20px;
+    display: none;
+  }
+  &--q::before,
+  &--a::before {
+    position: absolute;
+    top: 9px;
+    left: -20px;
+    display: inline-block;
+    width: 25px;
+    text-align: center;
+    @include font-size(26);
+    color: $color-main;
+  }
+  &--q::before {
+    content: "Q";
+  }
+  &--a::before {
+    content: "A";
+  }
+  &--q::after {
+    position: absolute;
+    top: 5px;
+    right: 0;
+    color: $color-main;
+    font-size: 2em;
+    font-family: "Material Icons Round";
+    content: "expand_less";
+    transition: 0.25s;
+  }
+  &--q.is-open::after {
+    transform: rotate(180deg);
+  }
+}
+
+// -----------------------------------------
+// contact
+// -----------------------------------------
+.contact {
+  margin-top: 40px;
+  @include mq(lg) {
+    margin-top: 60px;
+  }
+  &__img-wrapper {
+    width: 100%;
+  }
+  &__body {
+    background-color: $color-main;
+    text-align: center;
+  }
+  &__msg {
+    @include font-size(26);
+    color: #fff;
+    padding: 28px 0 10px 0;
+    font-weight: bold;
+    @include mq(lg) {
+      @include font-size(64);
+      padding: 50px 0 20px 0;
+    }
+  }
+  &__btn-wrapper {
+    padding-bottom: 20px;
+    @include mq(lg) {
+      padding-bottom: 50px;
+    }
+  }
+}
+
+// -----------------------------------------
+// footer
+// -----------------------------------------
+.footer {
+  padding: 50px 0;
+  background-color: #111;
+  @include mq(lg) {
+    padding: 100px 0;
+  }
+  &__img-link {
+    display: block;
+    line-height: 1;
+  }
+  &__img-wrapper {
+    margin: 0 auto;
+    width: 87px;
+    @include mq(lg) {
+      width: 180px;
+    }
+  }
+}
