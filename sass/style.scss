@@ -188,6 +188,25 @@ li {
   }
 }
 
+// スライドインするアニメーション
+.scroll-anime{
+	opacity: 0;
+	overflow: hidden;
+}
+.fadeInDown {
+	animation-name: fadeInDown;
+	animation-duration: 1s;
+	animation-fill-mode: forwards;
+}
+@keyframes fadeInDown {
+	0% {opacity: 0;}
+	100% {
+	opacity: 1;
+	transform: translate(0);
+	}
+}
+.downup {transform: translateY(50px);}
+
 // -----------------------------------------
 // header
 // -----------------------------------------

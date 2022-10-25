@@ -1,4 +1,16 @@
 $(function () {
+  //下から表示されるアニメーション
+  $(window).scroll(function () {
+		var window_height = jQuery(window).height();
+		var scroll_amount = jQuery(window).scrollTop();
+		jQuery('.scroll-anime').each(function () {
+			var target_position = jQuery(this).offset().top;
+			if(scroll_amount > target_position - window_height + 100) {
+				jQuery(this).addClass("fadeInDown");
+			}
+		});
+	});
+
   // スクロール時の制御
   $(window).scroll(function () {
     if ($(this).scrollTop() > 100) {
